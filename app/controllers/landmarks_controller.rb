@@ -8,8 +8,8 @@ class LandmarksController < ApplicationController
   end
   
   post '/landmarks' do
-     @landmark = Landmark.create(params[:landmark])
-     @landmark.save
+     @landmarks = Landmark.create(params[:landmark])
+     @landmarks.save
 
     redirect "landmarks/#{@landmark.id}"
    end
@@ -25,15 +25,15 @@ class LandmarksController < ApplicationController
    end
    
   get '/landmarks/:id/edit' do
-    @landmark = Landmark.find_by(params[:id])
+    @landmarks = Landmark.find_by(params[:id])
 
     erb :'landmarks/edit'
   end
   
   patch '/landmarks/:id' do
-    @landmark = Landmark.find_by(params[:id])
-    @landmark.update(params[:landmark])
-    @landmark.save
+    @landmarks = Landmark.find_by(params[:id])
+    @landmarks.update(params[:landmark])
+    @landmarks.save
 
     redirect "landmarks/#{@landmark.id}"
   end
