@@ -1,16 +1,17 @@
+require "pry"
 class LandmarksController < ApplicationController
     
   get '/landmarks/new' do
-    
+     @titles = Title.all
+     @landmarks = Landmark.all
     erb :'landmarks/new'
   end
   
-    post '/figures' do
-    @landmark = Landmark.create(params[:landmark])
-     if !params["landmark"]["name"].empty?
-      @landmark.landmarks << Landmark.create(name: params["landmark"]["name"])
-    end
-    
+  post '/landmarks' do
+     @landmark = Landmark.create(params[:landmark])
+     @landmark.save
+
+    redirect "landmarks/#{@landmark.id}"
    end
   
 end
