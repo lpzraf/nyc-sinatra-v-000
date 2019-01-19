@@ -37,11 +37,6 @@ class FiguresController < ApplicationController
   end
   
    patch '/figures/:id' do
-   
-    # if !params[:figure].keys.include?("landmark_ids")
-    # params[:figure]["landmark_ids"] = []
-    # end
- 
     @figure = Figure.find(params[:id])
     
     @figure.update(name: params["figure"]["name"])
@@ -51,6 +46,6 @@ class FiguresController < ApplicationController
    
     @figure.save
     redirect "figures/#{@figure.id}"
-end
+  end
    
 end
