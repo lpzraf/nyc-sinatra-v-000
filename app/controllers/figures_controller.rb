@@ -13,5 +13,5 @@ class FiguresController < ApplicationController
     redirect "figures/#{@figure.id}"
    end
   
-  
+
 end
